@@ -1,0 +1,25 @@
+{
+  "name": "word-mappers",
+  "version": "0.0.1",
+  "description": "A web-based word association game heavily inspired by Cross Clues (designer: Grégory Grard, artist: Simon Douchy, publisher: Blue Orange Games)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sahilthapar/word-mappers.git"
+  },
+  "author": "Athira Nair, Sahil Thapar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sahilthapar/word-mappers/issues"
+  },
+  "homepage": "https://github.com/sahilthapar/word-mappers#readme",
+  "dependencies": {
+    "boardgame.io": "^0.49.11"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+}
