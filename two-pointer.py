@@ -12,4 +12,4 @@ def two_pointer(prices: list):
     return max_profit
 
 
-print(two_pointer([7, 1, 5, 4, 6, 5]))
+# print(two_pointer([7, 1, 5, 4, 6, 5]))

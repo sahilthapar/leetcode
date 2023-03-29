@@ -11,4 +11,4 @@ def product_of_array_except_self(nums: list) -> int:
     return output
 
 
-print(product_of_array_except_self([2, 3, 4]))
+# print(product_of_array_except_self([2, 3, 4]))
