@@ -1,4 +1,7 @@
-def min_rotated_array(nums: list[int]) -> int:
+from typing import List
+
+
+def min_rotated_array(nums: List[int]) -> int:
     """
     Search a rotated array with all unique elements for the minimum using recursive binary search
     :param nums:

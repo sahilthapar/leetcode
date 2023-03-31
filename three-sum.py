@@ -1,7 +1,7 @@
 from typing import List
 
 
-def three_sum(self, nums: List[int]) -> List[List[int]]:
+def three_sum(nums: List[int]) -> List[List[int]]:
     # sort the array
     nums.sort()
     res = []

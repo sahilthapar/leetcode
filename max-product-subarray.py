@@ -1,4 +1,7 @@
-def max_product_subarray(nums: list) -> int:
+from typing import List
+
+
+def max_product_subarray(nums: List[int]) -> int:
     res = max(nums)
     cur_min, cur_max = 1, 1
 

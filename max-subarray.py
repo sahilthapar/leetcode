@@ -1,4 +1,7 @@
-def maximum_subarray(nums: list) -> int:
+from typing import List
+
+
+def maximum_subarray(nums: List[int]) -> int:
     max_sum = nums[0]
     cur_sum = 0
     for n in nums:

@@ -1,4 +1,7 @@
-def product_of_array_except_self(nums: list) -> int:
+from typing import List
+
+
+def product_of_array_except_self(nums: List[int]) -> int:
     output = [1] * len(nums)
     prefix = 1
     for i in range(len(nums)):
