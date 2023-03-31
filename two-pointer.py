@@ -1,4 +1,7 @@
-def two_pointer(prices: list):
+from typing import List
+
+
+def two_pointer(prices: List[int]) -> int:
     left, right = 0, 1
     max_profit = 0
 
@@ -10,6 +13,3 @@ def two_pointer(prices: list):
             left = right
         right += 1
     return max_profit
-
-
-# print(two_pointer([7, 1, 5, 4, 6, 5]))

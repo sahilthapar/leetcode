@@ -1,8 +1,11 @@
-def search(nums: list, target: int) -> int:
+from typing import List
+
+
+def search(nums: List[int], target: int) -> int:
     return modified_binary_search(nums, target, left=0, right=len(nums) - 1)
 
 
-def modified_binary_search(nums: list, target: int, left: int, right: int) -> int:
+def modified_binary_search(nums: List[int], target: int, left: int, right: int) -> int:
     middle = (left + right) // 2
     if nums[middle] == target:
         return middle
