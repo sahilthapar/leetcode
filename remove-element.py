@@ -9,17 +9,13 @@ class ListNode:
 
 
 def remove_elements(head: Optional[ListNode], val: int) -> Optional[ListNode]:
-    while head and head.val == val:
-        head = head.next
-    if not head:
-        return None
-    prev = head
-    cur = head.next
+    dummy = ListNode(next=head)
+    prev = dummy
+    cur = head
     while cur:
         if cur.val == val:
             prev.next = cur.next
-            cur = cur.next
         else:
             prev = cur
-            cur = cur.next
-    return head
+        cur = cur.next
+    return dummy.next
