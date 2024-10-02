@@ -1,15 +1,43 @@
 # Importing a File for Analytics
-
+<!-- TOC -->
+* [Importing a File for Analytics](#importing-a-file-for-analytics)
+  * [Questions](#questions)
+  * [System Design: Importing a File for Analytics](#system-design-importing-a-file-for-analytics)
+  * [Detailed Explanation and some tool choices](#detailed-explanation-and-some-tool-choices)
+    * [Data Ingestion](#data-ingestion)
+    * [Data Processing](#data-processing)
+    * [Data Storage](#data-storage)
+    * [Analytics](#analytics)
+    * [Scalability](#scalability)
+  * [Adapting the System Design for Near-Real-Time Processing](#adapting-the-system-design-for-near-real-time-processing)
+    * [Data Ingestion](#data-ingestion-1)
+    * [Data Processing](#data-processing-1)
+    * [Data Storage](#data-storage-1)
+    * [Analytics](#analytics-1)
+    * [Scalability](#scalability-1)
+    * [Additional Considerations:](#additional-considerations)
+  * [Possible additional questions](#possible-additional-questions)
+    * [Data Ingestion](#data-ingestion-2)
+    * [Data Processing](#data-processing-2)
+    * [Data Storage](#data-storage-2)
+<!-- TOC -->
 ## Questions
 **Always, ALWAYS** ask a lot of questions first.
 
-* **File Types:** What types of files will be imported (e.g., CSV, JSON, XML)?
-* **File Sizes:** What is the expected range of file sizes?
-* **Data Volume:** How frequently will files be imported?
-* **Data Latency Requirements:** Are there any real-time or near-real-time requirements for processing the data?
-* **Data Quality:** What are the data quality expectations (e.g., validation, cleaning)?
-* **Analytics Use Cases:** What types of analytics will be performed on the data? Aggregations? ML models?
-* **Scalability Requirements:** How will the system need to scale to accommodate future growth?
+* **Ingestion:**
+  * **Data Variety i.e. File types:** Structured or unstructured data? What types of files will be imported (e.g., CSV, JSON, XML)?
+  * **Data Volume i.e. File Sizes:** What is the expected range of file sizes? How many files will be sent typically?
+  * **Data Velocity:** How frequently will files be imported?
+
+* **Processing:**
+  * **Data Latency Requirements:** Are there any real-time or near-real-time requirements for processing the data?
+  * **Data Quality:** What are the data quality expectations (e.g., validation, cleaning)?
+
+* **Storage + BI tools:**
+  * **Analytics Use Cases:** What types of analytics will be performed on the data? Aggregations? ML models?
+  * **Kind of data**: Time-series? Orders?
+  * **Scalability Requirements:** How will the system need to scale to accommodate future growth?
+
 
 
 ## System Design: Importing a File for Analytics
@@ -68,6 +96,14 @@ Based on the information provided, here are some initial considerations:
   * **Why:** Time series databases are specifically designed for handling time-stamped data efficiently.
   * **When:** Use a time series database for applications that involve time-series analysis, such as IoT data, financial data, or sensor data.
   * **Example tools:** Influx DB, Prometheus
+* **Apache Iceberg based Data Lake / Warehouse**
+  * **Time Travel:** Iceberg's time travel feature allows you to query historical versions of your data, 
+  making it easier to track changes and perform data audits.
+  * **Change Data Capture:** Iceberg can capture changes to your data as they occur, 
+  making it easier to build real-time data pipelines and applications.
+  * **Schema Evolution:** Iceberg supports schema evolution, allowing you to add or remove columns from your tables without disrupting existing queries.
+  * **Performance:** Iceberg is designed for high performance, especially when dealing with large datasets.
+  * **Integration:** Iceberg integrates well with many popular data processing and analytics tools.
 
 ### Analytics
 
