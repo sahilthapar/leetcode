@@ -1,0 +1,62 @@
+[
+  {
+    "timestamp": "2023-12-25T12:00:00Z",
+    "metric": 100,
+    "category": "Sales",
+    "userId": "customer123"
+  },
+  {
+    "timestamp": "2023-12-26T13:00:00Z",
+    "metric": 120,
+    "category": "Marketing",
+    "userId": "customer456"
+  },
+  {
+    "timestamp": "2023-12-27T14:00:00Z",
+    "metric": 80,
+    "category": "Support",
+    "userId": "customer123"
+  },
+  {
+    "timestamp": "2023-12-28T15:00:00Z",
+    "metric": 150,
+    "category": "Product",
+    "userId": "customer789"
+  },
+  {
+    "timestamp": "2023-12-29T16:00:00Z",
+    "metric": 90,
+    "category": "Marketing",
+    "userId": "customer456"
+  },
+  {
+    "timestamp": "2023-12-30T17:00:00Z",
+    "metric": 110,
+    "category": "Sales",
+    "userId": "customer123"
+  },
+  {
+    "timestamp": "2023-12-31T18:00:00Z",
+    "metric": 130,
+    "category": "Product",
+    "userId": "customer789"
+  },
+  {
+    "timestamp": "2024-01-01T19:00:00Z",
+    "metric": 70,
+    "category": "Marketing",
+    "userId": "customer456"
+  },
+  {
+    "timestamp": "2024-01-02T20:00:00Z",
+    "metric": 160,
+    "category": "Sales",
+    "userId": "customer123"
+  },
+  {
+    "timestamp": "2024-01-03T21:00:00Z",
+    "metric": 140,
+    "category": "Product",
+    "userId": "customer789"
+  }
+]
