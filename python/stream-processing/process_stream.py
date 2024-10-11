@@ -43,7 +43,6 @@ def process_stream(stream: Iterable, max_size: int = 200):
     }
     for message in stream:
         event = data_event_parser(message)
-        print(message, event)
         if not event:
             continue
         is_bot = event['bot']
