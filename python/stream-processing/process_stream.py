@@ -1,7 +1,6 @@
-from typing import Optional, Dict, ByteString, Iterable
+from typing import Optional, Dict, Iterable
 import json
 import requests
-from functools import reduce
 
 def read_stream(url: str) -> Iterable:
     """
@@ -19,7 +18,7 @@ def data_event_parser(message_line: str) -> Optional[Dict]:
     Takes a byte string and checks the event type
     If not, returns None
     If data event, parses it as a dict and returns that
-    :param byte_str:
+    :param message_line:
     :return:
     """
     if not message_line.startswith('data: '):
@@ -52,10 +51,15 @@ def process_stream(stream: Iterable, max_size: int = 200):
         stats['bot_count'] += (1 if is_bot else 0)
         if stats['event_count'] == max_size:
             return stats
-    # if stream has ended
+    # if stream has ended before max_size was reached
     return stats
 
 def print_stats(stats: dict):
+    """
+    Takes a stats dict and calculates bot rate
+    :param stats:
+    :return:
+    """
     event_count = stats['event_count']
     bot_count = stats['bot_count']
     bot_rate = bot_count / float(event_count)
@@ -83,4 +87,6 @@ def main():
     stats = process_stream(stream, 200)
     print_stats(stats)
 
-main()
+
+if __name__ == '__main__':
+    main()
