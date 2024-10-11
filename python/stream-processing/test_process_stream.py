@@ -1,10 +1,10 @@
 import pytest
-from process_stream import data_event_parser, read_stream
+from process_stream import data_event_parser, process_stream
 
 class TestProcessStream:
 
     @pytest.mark.parametrize(
-        argnames=("byte_str", "expected_response"),
+        argnames=("stream_string", "expected_response"),
         argvalues=[
             (':ok', None),
             ('', None),
@@ -20,35 +20,40 @@ class TestProcessStream:
             "data_message"
         ]
     )
-    def test_process_stream(self, byte_str, expected_response):
-        encoded_str = byte_str.encode()
-        assert data_event_parser(encoded_str) == expected_response
-
+    def test_data_event_parser(self, stream_string, expected_response):
+        assert data_event_parser(stream_string) == expected_response
 
     @pytest.mark.parametrize(
-        argnames=['max_size','full_stream','expected_response'],
+        argnames=("stream", "max_size", "expected_stats"),
         argvalues=[
-            (None, ['this', 'is', 'a', 'mock', 'stream'], ['this', 'is', 'a', 'mock', 'stream']),
-            (4, ['this', 'is', 'a', 'mock', 'stream'], ['this', 'is', 'a', 'mock'])
+            (
+                ['data: {"user":"BotMultichill","bot":true}'],
+                200,
+                {'event_count': 1, 'bot_count': 1}
+            ),
+            (
+                ['data: {"user":"BotMultichill","bot":false}'],
+                200,
+                {'event_count': 1, 'bot_count': 0}
+            ),
+            (
+                ['data: {"user":"BotMultichill","bot":false}', 'data: {"user":"BotMultichill","bot":true}'],
+                200,
+                {'event_count': 2, 'bot_count': 1}
+            ),
+            (
+                [':ok', 'data: {"user":"BotMultichill","bot":true}'],
+                200,
+                {'event_count': 1, 'bot_count': 1}
+            )
         ],
         ids=[
-            "default_max_size",
-            "set_max_size"
+            "single_bot_message",
+            "single_non_bot_message",
+            "bot_and_non_bot_message",
+            "bot_message_with_non_data_message"
         ]
     )
-    def test_read_stream(self, mocker, max_size, full_stream, expected_response):
-        mocker.patch('requests.get', return_value=full_stream)
-        actual_response = None
-        if max_size:
-            response = read_stream('mock-url', max_size)
-        else:
-            response = read_stream('mock-url')
-
-        assert list[response] == expected_response
-
-
-
-
-
-
+    def test_process_stream(self, stream, max_size, expected_stats):
+        assert process_stream(stream, max_size) == expected_stats
 
