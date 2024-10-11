@@ -10,7 +10,7 @@ class TestProcessStream:
             ('', None),
             ('event: message', None),
             ('id: [{"topic":"eqiad.mediawiki.recentchange"}]', None),
-            ('data: {"user":"BotMultichill","bot":true,}', {"user": "BotMultichill", "bot": True})
+            ('data: {"user":"BotMultichill","bot":true}', {"user": "BotMultichill", "bot": True})
         ],
         ids=[
             "ok_message",
