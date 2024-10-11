@@ -1,4 +1,4 @@
-from typing import Optional, Dict, ByteString
+from typing import Optional, Dict, ByteString, Iterable
 import json
 
 def data_event_parser(byte_str: ByteString) -> Optional[Dict]:
@@ -17,6 +17,17 @@ def data_event_parser(byte_str: ByteString) -> Optional[Dict]:
     data_dict = json.loads(decoded_str[6:])
 
     return data_dict
+
+
+def read_stream(url: str, max_size: int = 5) -> Iterable:
+    """
+    Reads an url and returns an iterable with a max_size to limit
+    the number of events to read from the stream
+    :param url:
+    :param max_size:
+    :return:
+    """
+    pass
 
 
 
